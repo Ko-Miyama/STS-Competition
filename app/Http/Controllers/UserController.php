@@ -9,6 +9,6 @@ class UserController extends Controller
 {
     public function index(User $user)
     {
-        return $user->get();
+        return view('users/home_page');
     }
 }
