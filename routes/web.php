@@ -16,9 +16,7 @@ use App\Http\Controllers\SubmitController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/submits', [SubmitController::class, 'index']);
