@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 
 class SubmitController extends Controller
 {
-    public function index(Submit $submit)
+    public function submit()
     {
-        return $submit->get();
+        return view('submits/submit');
+    }
+
+    public function overview()
+    {
+        return view('submits/overview');
+    }
+
+    public function leaderboard()
+    {
+        return view('submits/leaderboard');
     }
 }

@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function discussion()
     {
-        return $post->get();
+        return view('posts/discussion');
     }
 }
