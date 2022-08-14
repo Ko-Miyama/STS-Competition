@@ -16,13 +16,13 @@ use App\Http\Controllers\SubmitController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'home_page']);
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/top', [PostController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::get('/submits', [SubmitController::class, 'index']);
 });
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/submits', [SubmitController::class, 'index']);
 
 Auth::routes();
 
