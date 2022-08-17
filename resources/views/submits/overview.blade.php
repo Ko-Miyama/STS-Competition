@@ -29,8 +29,11 @@
             <div class="submits">
                 @foreach ($submits as $submit)
                     <div class="submit">
-                        
+                        <h2>手法名：{{ $submit->manner }}</h2>
+                        <h3>{{ $submit->comment }}</h3>
+                        <h3>Score: {{ $submit->score }}</h3>
                     </div>
+                @endforeach
             </div>
         </div>
     </body>

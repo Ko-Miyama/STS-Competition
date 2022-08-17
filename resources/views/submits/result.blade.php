@@ -18,8 +18,8 @@
         </div>
         <div class="bar_area">
             <p><a href="/top">トップ</a></p>
-            <p><a href="/submit">モデルの提出</a></p>
-            <p><a href="/overview"><font color="red">提出したモデル一覧</font></a></p>
+            <p><a href="/submit"><font color="red">モデルの提出</font></a></p>
+            <p><a href="/overview">提出したモデル一覧</a></p>
             <p><a href="/leaderboard">リーダーボード</a></p>
             <p><a href="/discussion">ディスカッション</a></p>
             <p><a href="/rule">ルール</a></p>

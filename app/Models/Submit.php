@@ -21,4 +21,10 @@ class Submit extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getSelectedPaginateByLimit(int $id, int $limit_count = 5)
+    {
+        // updated_atで降順に並べたあと、limitで件数制限をかける
+        return $this::with('user')->where('user_id', $id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
