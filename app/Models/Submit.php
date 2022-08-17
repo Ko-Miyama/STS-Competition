@@ -27,4 +27,9 @@ class Submit extends Model
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this::with('user')->where('user_id', $id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+
+    public function getOrderedByScore()
+    {
+        return $this::with('user')->orderBy('score', 'DESC')->get();
+    }
 }

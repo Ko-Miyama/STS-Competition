@@ -30,14 +30,15 @@ class SubmitController extends Controller
         return view('submits/result')->with(['score' => $score]);
     }
 
-    public function overview(Request $request, Submit $submit)
+    public function overview(Submit $submit, Request $request)
     {
-        $submits = $submit->getSelectedPaginateByLimit($request->user()->id);
-        return view('submits/overview')->with(['submits' => $submits]);
+        //$submits = $submit->getSelectedPaginateByLimit($request->user()->id);
+        //return view('submits/overview')->with(['submits' => $submits]);
+        return view('submits/overview')->with(['submits' => $request->user()->getSubmitsPaginateByLimit()]);
     }
 
-    public function leaderboard()
+    public function leaderboard(Submit $submit, Request $request)
     {
-        return view('submits/leaderboard');
+        return view('submits/leaderboard')->with(['submits' => $submit->getOrderedByScore()]);
     }
 }

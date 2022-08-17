@@ -26,6 +26,16 @@
         </div>
         <div class="main">
             <p>リーダーボード</p>
+            <div class="submits">
+                @for ($i = 0; $i < count($submits); $i++)
+                    <div class="submit">
+                        <h1>{{ $i+1 }}位 {{ $submits[$i]->user->name }}</h1>
+                        <h2>手法：{{ $submits[$i]->manner }} スコア：{{ $submits[$i]->score }}</h2>
+                        <h3>こだわり</h3>
+                        {{ $submits[$i]->comment }}
+                    </div>
+                @endfor
+            </div>
         </div>
     </body>
 </html>
