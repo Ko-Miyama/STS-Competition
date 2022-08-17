@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>submit overview</title>
+        <title>submit result</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,13 +25,9 @@
             <p><a href="/rule">ルール</a></p>
         </div>
         <div class="main">
-            <p>提出したモデル一覧</p>
-            <div class="submits">
-                @foreach ($submits as $submit)
-                    <div class="submit">
-                        
-                    </div>
-            </div>
+            <p>result</p>
+            <h1>提出完了！</h1>
+            <h2>あなたのスコアは{{ $score }}です！</h2>
         </div>
     </body>
 </html>

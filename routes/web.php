@@ -20,6 +20,7 @@ Route::get('/', [UserController::class, 'home_page']);
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/top', [UserController::class, 'top']);
     Route::get('/submit', [SubmitController::class, 'submit']);
+    Route::post('/submit/result', [SubmitController::class, 'store']);
     Route::get('/overview', [SubmitController::class, 'overview']);
     Route::get('/leaderboard', [SubmitController::class, 'leaderboard']);
     Route::get('/discussion', [PostController::class, 'discussion']);

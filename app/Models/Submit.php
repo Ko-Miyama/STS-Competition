@@ -9,6 +9,14 @@ class Submit extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'file_path',
+        'manner',
+        'comment',
+        'score',
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
