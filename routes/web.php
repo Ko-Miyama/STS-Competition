@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/overview', [SubmitController::class, 'overview']);
     Route::get('/leaderboard', [SubmitController::class, 'leaderboard']);
     Route::get('/discussion', [PostController::class, 'discussion']);
+    Route::get('/discussion/create', [PostController::class, 'create']);
+    Route::post('/discussion/create/store', [PostController::class, 'store']);
     Route::get('/rule', [UserController::class, 'rule']);
 });
 

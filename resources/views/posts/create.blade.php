@@ -25,17 +25,28 @@
             <p><a href="/rule">ルール</a></p>
         </div>
         <div class="main">
-            <p>ディスカッション</p>
-            <a href="/discussion/create" class="create"><font color="green">[投稿作成]</font></a>
-            <div class="posts">
-                @foreach ($posts as $post)
-                    <div class="post">
-                        <h2 class="title">{{ $post->title }}</h2>
-                        <p class="body">{{ $post->body }}</p>
-                        <p class="sub_info">投稿者：{{ $post->user->name }} タグ：{{ $post->category->name }}</p>
-                    </div>
-                @endforeach
-            </div>
+            <h1>新規投稿</h1>
+            <form action="/discussion/create/store" method="POST">
+                @csrf
+                <div class="category">
+                    <h2>Category</h2>
+                    <select name="post[category_id]">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="title">
+                    <h2>Title</h2>
+                    <input type="text" name="post[title]" placeholder="タイトル"/>
+                </div>
+                <div class="body">
+                    <h2>Body</h2>
+                    <textarea name="post[body]" placeholder="〇〇が××で分かりません"></textarea>
+                </div>
+                <input type="submit" value="保存"/>
+            </form>
+            <div class="back">[<a href="/discussion">戻る</a>]</div>
         </div>
     </body>
 </html>
