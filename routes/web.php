@@ -18,10 +18,15 @@ use App\Http\Controllers\SubmitController;
 
 Route::get('/', [UserController::class, 'home_page']);
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/top', [PostController::class, 'index']);
-    Route::get('/users', [UserController::class, 'index']);
-    Route::get('/posts', [PostController::class, 'index']);
-    Route::get('/submits', [SubmitController::class, 'index']);
+    Route::get('/top', [UserController::class, 'top']);
+    Route::get('/submit', [SubmitController::class, 'submit']);
+    Route::post('/submit/result', [SubmitController::class, 'store']);
+    Route::get('/overview', [SubmitController::class, 'overview']);
+    Route::get('/leaderboard', [SubmitController::class, 'leaderboard']);
+    Route::get('/discussion', [PostController::class, 'discussion']);
+    Route::get('/discussion/create', [PostController::class, 'create']);
+    Route::post('/discussion/create/store', [PostController::class, 'store']);
+    Route::get('/rule', [UserController::class, 'rule']);
 });
 
 Auth::routes();

@@ -9,6 +9,13 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'body',
+        'user_id',
+        'category_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,5 +24,10 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getPaginateByLimit(int $limit_count=5)
+    {
+        return $this::with(['user', 'category'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
