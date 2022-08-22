@@ -21,4 +21,12 @@ class UserController extends Controller
     {
         return view('users/rule');
     }
+
+    public function squeeze(User $user)
+    {
+        return view('users/discussion')->with([
+            'user' => $user,
+            'posts' => $user->getPostsPaginateByLimit()
+        ]);
+    }
 }

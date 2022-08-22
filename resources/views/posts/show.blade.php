@@ -7,10 +7,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>submit overview</title>
+        <title>discussion</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="header">
@@ -19,25 +20,23 @@
         <div class="bar_area">
             <p><a href="/top">トップ</a></p>
             <p><a href="/submit">モデルの提出</a></p>
-            <p><a href="/overview"><font color="red">提出したモデル一覧</font></a></p>
+            <p><a href="/overview">提出したモデル一覧</a></p>
             <p><a href="/leaderboard">リーダーボード</a></p>
-            <p><a href="/discussion">ディスカッション</a></p>
+            <p><a href="/discussion"><font color="red">ディスカッション</font></a></p>
             <p><a href="/rule">ルール</a></p>
         </div>
         <div class="main">
-            <p>提出したモデル一覧</p>
-            <div class="submits">
-                @foreach ($submits as $submit)
-                    <div class="submit">
-                        <h2>手法名：{{ $submit->manner }}</h2>
-                        <h3>{{ $submit->comment }}</h3>
-                        <h3>Score: {{ $submit->score }}</h3>
-                    </div>
-                @endforeach
+            <p>ディスカッション</p>
+            @if (auth()->id() === $post->user_id)
+                <a href="/discussion/{{ $post->id }}/edit" class="edit">[編集]</a>
+            @endif
+            <div class="post">
+                <h2 class="title">{{ $post->title }}</h2>
+                <p class="body">{{ $post->body }}</p>
+                <p class="sub_info">投稿者：{{ $post->user->name }} タグ：{{ $post->category->name }}</p>
+                <p class="sub_info">更新日時：{{ $post->updated_at }}</p>
             </div>
-            <div class="paginate">
-                {{ $submits->links() }}
-            </div>
+            <a href="/discussion">戻る</a>
         </div>
     </body>
 </html>

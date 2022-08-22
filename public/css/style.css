@@ -1,0 +1,11 @@
+.post {
+    background-color: #FFCC32;
+}
+
+.create, .edit {
+    color: green;
+}
+
+.error {
+    color: red;
+}
