@@ -4,22 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Submit;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubmitRequest;
 
 class SubmitController extends Controller
 {
     public function submit()
     {
         return view('submits/submit');
+        /*$command = 'python3 ../app/Python/correlation.py ../storage/app/a.txt';
+        exec($command, $output);
+        dd($output);*/
     }
 
-    public function store(Submit $submit, Request $request)
+    public function store(Submit $submit, SubmitRequest $request)
     {
-        //↓後でこのコードにする為に、sqlのfile_pathの文字数制限を長くする
-        //$file_path = $request->file('file')->store('');
-        $file_name = $request->file('file')->getClientOriginalName();
-        $file_path = $request->file('file')->storeAs('', 'a.txt');
-        $score = rand(0, 100) / 100;
-        //**↑randじゃなくちゃんとしたスコアにする**
+        $file_name = $request->file('file')->store('');
+        $file_path = '../storage/app/' . $file_name;
+        $command = 'python3 ../app/Python/correlation.py ' . $file_path;
+        exec($command, $score);
+        $score = $score[0];
 
         $input = $request['post'];
         $input['file_path'] = $file_path;
@@ -37,7 +40,7 @@ class SubmitController extends Controller
         return view('submits/overview')->with(['submits' => $request->user()->getSubmitsPaginateByLimit()]);
     }
 
-    public function leaderboard(Submit $submit, Request $request)
+    public function leaderboard(Submit $submit)
     {
         return view('submits/leaderboard')->with(['submits' => $submit->getOrderedByScore()]);
     }

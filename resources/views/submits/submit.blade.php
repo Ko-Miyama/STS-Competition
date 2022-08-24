@@ -11,6 +11,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="header">
@@ -30,13 +31,13 @@
                 @csrf
                 提出ファイル
                 <input type="file" name="file"><br>
-                <!--***↑後でバリデーション付ける..txt py のみ***-->
+                <p class="error">{{ $errors->first('file') }}</p>
                 手法名
-                <input type="text" name="post[manner]" placeholder="手法名"><br>
-                <!--***↑後でバリデーション付ける***-->
+                <input type="text" name="post[manner]" placeholder="手法名" value="{{ old('post.manner') }}"><br>
+                <p class="error">{{ $errors->first('post.manner') }}</p>
                 こだわり
-                <textarea name="post[comment]" placeholder="こだわり"></textarea><br>
-                <!--***↑後でバリデーション付ける***-->
+                <textarea name="post[comment]" placeholder="こだわり">{{ old('post.comment') }}</textarea><br>
+                <p class="error">{{ $errors->first('post.comment') }}</p>
                 <button type="submit">提出</button>
             </form>
         </div>
