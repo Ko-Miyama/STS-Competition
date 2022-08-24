@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubmitController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/discussion', [PostController::class, 'discussion']);
     Route::get('/discussion/create', [PostController::class, 'create']);
     Route::post('/discussion/create/store', [PostController::class, 'store']);
+    Route::get('/discussion/{post}', [PostController::class, 'show']);
+    Route::get('/discussion/{post}/edit', [PostController::class, 'edit']);
+    Route::put('/discussion/{post}', [PostController::class, 'update']);
+    Route::delete('/discussion/{post}', [PostController::class, 'delete']);
+    Route::get('/discussion/user/{user}', [UserController::class, 'squeeze']);
+    Route::get('/discussion/category/{category}', [CategoryController::class, 'squeeze']);
     Route::get('/rule', [UserController::class, 'rule']);
 });
 

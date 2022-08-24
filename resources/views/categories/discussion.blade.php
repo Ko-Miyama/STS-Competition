@@ -27,7 +27,7 @@
         </div>
         <div class="main">
             <p>ディスカッション</p>
-            <a href="/discussion/create" class="create">[投稿作成]</a>
+            <h1>タグ：{{ $category->name }}</h1>
             <div class="posts">
                 @foreach ($posts as $post)
                     <div class="post">
@@ -45,14 +45,14 @@
                         </h2>
                         <p class="body">{{ $post->body }}</p>
                         <p class="sub_info">
-                            投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a>
-                            タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a></p>
+                            投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a></p>
                     </div>
                 @endforeach
             </div>
             <div class="paginate">
                 {{ $posts->links() }}
             </div>
+            <a href="/discussion">戻る</a>
         </div>
         <script>
             function deletePost(id) {

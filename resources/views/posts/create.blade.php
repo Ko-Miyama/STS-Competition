@@ -11,6 +11,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="header">
@@ -32,17 +33,20 @@
                     <h2>Category</h2>
                     <select name="post[category_id]">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" @if($category->id === (int)old('post.category_id')) selected @endif>{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    <p class="error">{{ $errors->first('post.category_id') }}</p>
                 </div>
                 <div class="title">
                     <h2>Title</h2>
-                    <input type="text" name="post[title]" placeholder="タイトル"/>
+                    <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
+                    <p class="error">{{ $errors->first('post.title') }}</p>
                 </div>
                 <div class="body">
                     <h2>Body</h2>
-                    <textarea name="post[body]" placeholder="〇〇が××で分かりません"></textarea>
+                    <textarea name="post[body]" placeholder="〇〇が××で分かりません">{{ old('post.body') }}</textarea>
+                    <p class="error">{{ $errors->first('post.body') }}</p>
                 </div>
                 <input type="submit" value="保存"/>
             </form>

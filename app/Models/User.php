@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->submits()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+
+    public function getPostsPaginateByLimit(int $limit_count = 5)
+    {
+        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
