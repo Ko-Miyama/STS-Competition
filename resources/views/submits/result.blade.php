@@ -11,6 +11,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="header">
@@ -26,8 +27,13 @@
         </div>
         <div class="main">
             <p>result</p>
-            <h1>提出完了！</h1>
-            <h2>あなたのスコアは{{ $score }}です！</h2>
+            @if (! empty($score))
+                <h1>提出完了！</h1>
+                <h2>あなたのスコアは{{ $score }}です！</h2>
+            @else
+                <h1>提出失敗</h1>
+                <h2 class="error">規定通りのフォーマットで提出してください</h2>
+            @endif
         </div>
     </body>
 </html>

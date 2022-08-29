@@ -22,14 +22,23 @@ class SubmitController extends Controller
         $file_path = '../storage/app/' . $file_name;
         $command = 'python3 ../app/Python/correlation.py ' . $file_path;
         exec($command, $score);
-        $score = $score[0];
 
-        $input = $request['post'];
-        $input['file_path'] = $file_path;
-        $input['score'] = $score;
-        $input['user_id'] = $request->user()->id;
+        //python実行をした結果が正常であれば、$scoreは中に相関値が入った配列となっている(=>$score = ["相関値"])
+        //異常時は、$scoreは空となっている為、以下のような条件分岐となっている
+        //異常時は、提出ファイルに異常があるということなので削除する
+        if (! empty($score)) {
+            $score = $score[0];
+            $input = $request['post'];
+            $input['file_path'] = $file_path;
+            $input['score'] = $score;
+            $input['user_id'] = $request->user()->id;
+            $submit->fill($input)->save();
+        }
 
-        $submit->fill($input)->save();
+        else {
+            unlink($file_path);
+        }
+
         return view('submits/result')->with(['score' => $score]);
     }
 
