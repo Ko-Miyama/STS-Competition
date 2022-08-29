@@ -51,6 +51,10 @@ class SubmitController extends Controller
 
     public function leaderboard(Submit $submit)
     {
-        return view('submits/leaderboard')->with(['submits' => $submit->getOrderedByScore()]);
+        [$submits, $ranks] = $submit->getRanking();
+        return view('submits/leaderboard')->with([
+            'submits' => $submits,
+            'ranks' => $ranks
+        ]);
     }
 }

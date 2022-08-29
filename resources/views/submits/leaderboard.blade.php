@@ -11,6 +11,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="header">
@@ -29,7 +30,7 @@
             <div class="submits">
                 @for ($i = 0; $i < count($submits); $i++)
                     <div class="submit">
-                        <h1>{{ $i+1 }}位 {{ $submits[$i]->user->name }}</h1>
+                        <h1>{{ $ranks[$i] }}位 {{ $submits[$i]->user->name }}</h1>
                         <h2>手法：{{ $submits[$i]->manner }} スコア：{{ $submits[$i]->score }}</h2>
                         <h3>こだわり</h3>
                         {{ $submits[$i]->comment }}
