@@ -26,38 +26,32 @@
             <p><a href="/rule">ルール</a></p>
         </div>
         <div class="main">
-            @if ($post->user_id === auth()->id())
-                <h1>投稿編集</h1>
-                <form action="/discussion/{{ $post->id }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="category">
-                        <h2>Category</h2>
-                        <select name="post[category_id]">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}" @if($category->id === $post->category_id) selected @endif>{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                        <p class="error">{{ $errors->first('post.category_id') }}</p>
-                    </div>
-                    <div class="title">
-                        <h2>Title</h2>
-                        <input type="text" name="post[title]" placeholder="タイトル" value="{{ $post->title }}"/>
-                        <p class="error">{{ $errors->first('post.title') }}</p>
-                    </div>
-                    <div class="body">
-                        <h2>Body</h2>
-                        <textarea name="post[body]" placeholder="〇〇が××で分かりません">{{ $post->body }}</textarea>
-                        <p class="error">{{ $errors->first('post.body') }}</p>
-                    </div>
-                    <input type="submit" value="更新"/>
-                </form>
-                <div class="back">[<a href="/discussion/{{ $post->id }}">戻る</a>]</div>
-            @else
-                <h1>編集不可</h1>
-                <h3 class="error">あなたは「タイトル名：{{ $post->title }}」の投稿者ではないので</h3>
-                <h3 class="error">編集不可です！！！</h3>
-            @endif
+            <h1>投稿編集</h1>
+            <form action="/discussion/{{ $post->id }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="category">
+                    <h2>Category</h2>
+                    <select name="post[category_id]">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" @if($category->id === $post->category_id) selected @endif>{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    <p class="error">{{ $errors->first('post.category_id') }}</p>
+                </div>
+                <div class="title">
+                    <h2>Title</h2>
+                    <input type="text" name="post[title]" placeholder="タイトル" value="{{ $post->title }}"/>
+                    <p class="error">{{ $errors->first('post.title') }}</p>
+                </div>
+                <div class="body">
+                    <h2>Body</h2>
+                    <textarea name="post[body]" placeholder="〇〇が××で分かりません">{{ $post->body }}</textarea>
+                    <p class="error">{{ $errors->first('post.body') }}</p>
+                </div>
+                <input type="submit" value="更新"/>
+            </form>
+            <div class="back">[<a href="/discussion/{{ $post->id }}">戻る</a>]</div>
         </div>
     </body>
 </html>

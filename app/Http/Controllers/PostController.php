@@ -34,23 +34,37 @@ class PostController extends Controller
 
     public function edit(Post $post, Category $category)
     {
-        return view('posts/edit')->with([
-            'post' => $post,
-            'categories' => $category->get()
-        ]);
+        //ログインユーザ以外からの投稿の編集を避けるための条件分岐
+        if (auth()->id() === $post->user_id) {
+            return view('posts/edit')->with([
+                'post' => $post,
+                'categories' => $category->get()
+            ]);
+        }
+        else {
+            return back();
+        }
     }
 
     public function update(Post $post, PostRequest $request)
     {
-        $input = $request['post'];
-        $input['user_id'] = $request->user()->id;
-        $post->fill($input)->save();
+        //ログインユーザ以外からの投稿の編集を避けるための条件
+        if ($post->user_id === $request->user()->id) {
+            $input = $request['post'];
+            $input['user_id'] = $request->user()->id;
+            $post->fill($input)->save();
+        }
         return redirect('/discussion/' . $post->id);
     }
 
     public function delete(Post $post)
     {
-        $post->delete();
-        return redirect('/discussion');
+        //ログインユーザ以外からの投稿の削除を避けるための条件
+        if ($post->user_id === auth()->id()) {
+            $post->delete();
+        }
+        //カテゴリ別表示画面や、ユーザ別表示画面からのdelete要求がされる場合もあるので、
+        //return redirect('/discussion'); -> return back(); に変更
+        return back();
     }
 }
