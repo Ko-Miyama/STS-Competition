@@ -11,9 +11,6 @@ class SubmitController extends Controller
     public function submit()
     {
         return view('submits/submit');
-        /*$command = 'python3 ../app/Python/correlation.py ../storage/app/a.txt';
-        exec($command, $output);
-        dd($output);*/
     }
 
     public function store(Submit $submit, SubmitRequest $request)
