@@ -36,7 +36,7 @@
                                 <form action="/discussion/{{ $post->id }}" id="form_{{ $post->id }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" onclick="return deletePost({{ $post->id }});">削除</button>
+                                    <button type="button" onclick="return deletePost('form_' + {{ $post->id }});">削除</button>
                                 </form>
                             @endif
                         </div>
@@ -46,7 +46,9 @@
                         <p class="body">{{ $post->body }}</p>
                         <p class="sub_info">
                             投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a>
-                            タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a></p>
+                            タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a>
+                            メッセージ数：{{ $post->messages_count }}件
+                        </p>
                     </div>
                 @endforeach
             </div>
@@ -58,7 +60,7 @@
             function deletePost(id) {
                 'use strict';
                 if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById('form_' + id).submit();
+                    document.getElementById(id).submit();
                 }
             }
         </script>

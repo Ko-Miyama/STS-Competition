@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function getSubmitsPaginateByLimit(int $limit_count = 5)
     {
         return $this->submits()->orderBy('updated_at', 'DESC')->paginate($limit_count);
@@ -59,6 +64,6 @@ class User extends Authenticatable
 
     public function getPostsPaginateByLimit(int $limit_count = 5)
     {
-        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->with('category')->withCount('messages')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

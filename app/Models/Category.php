@@ -16,6 +16,6 @@ class Category extends Model
 
     public function getPaginateByLimit(int $limit_count = 5)
     {
-        return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->with('user')->withCount('messages')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

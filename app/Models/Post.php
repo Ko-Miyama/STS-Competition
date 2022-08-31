@@ -26,8 +26,18 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function getPaginateByLimit(int $limit_count=5)
     {
-        return $this::with(['user', 'category'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with(['user', 'category'])->withCount('messages')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
+    public function getMessages()
+    {
+        return $this->messages()->with(['user'])->orderBy('created_at', 'DESC')->get();
     }
 }

@@ -45,7 +45,9 @@
                         </h2>
                         <p class="body">{{ $post->body }}</p>
                         <p class="sub_info">
-                            タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a></p>
+                            タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a>
+                            メッセージ数：{{ $post->messages_count }}
+                        </p>
                     </div>
                 @endforeach
             </div>

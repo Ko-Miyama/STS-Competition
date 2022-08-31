@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubmitController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/discussion/{post}', [PostController::class, 'delete']);
     Route::get('/discussion/user/{user}', [UserController::class, 'squeeze']);
     Route::get('/discussion/category/{category}', [CategoryController::class, 'squeeze']);
+    Route::post('/discussion/{post}/msgstore', [MessageController::class, 'store']);
+    Route::get('/discussion/{post}/{message}/edit', [MessageController::class, 'edit']);
+    Route::put('/discussion/{post}/{message}', [MessageController::class, 'update']);
+    Route::delete('/discussion/{post}/{message}', [MessageController::class, 'delete']);
     Route::get('/rule', [UserController::class, 'rule']);
 });
 

@@ -29,7 +29,10 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts/show')->with(['post' => $post]);
+        return view('posts/show')->with([
+            'post' => $post,
+            'messages' => $post->getMessages()
+        ]);
     }
 
     public function edit(Post $post, Category $category)
@@ -66,5 +69,10 @@ class PostController extends Controller
         //カテゴリ別表示画面や、ユーザ別表示画面からのdelete要求がされる場合もあるので、
         //return redirect('/discussion'); -> return back(); に変更
         return back();
+    }
+
+    public function test(Post $post)
+    {
+        dd($post->withCount('messages')->get());
     }
 }
