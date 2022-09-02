@@ -64,6 +64,7 @@ class PostController extends Controller
     {
         //ログインユーザ以外からの投稿の削除を避けるための条件
         if ($post->user_id === auth()->id()) {
+            $post->messages()->delete();
             $post->delete();
         }
         //カテゴリ別表示画面や、ユーザ別表示画面からのdelete要求がされる場合もあるので、
