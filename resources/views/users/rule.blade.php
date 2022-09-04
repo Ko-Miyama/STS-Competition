@@ -25,7 +25,11 @@
             <p><a href="/rule"><font color="red">ルール</font></a></p>
         </div>
         <div class="main">
-            <p>ルール</p>
+            <h1>ルール</h1>
+            <iframe src="{{ asset('pdf/STS_intro.pdf') }}" width="50%" height="350px" controlsList="nodownload" oncontextmenu="return false;"></iframe>
+            <iframe src="{{ asset('pdf/STS_howto.pdf') }}" width="50%" height="350px" controlsList="nodownload" oncontextmenu="return false;"></iframe>
+            <p>下のファイルをダウンロードして、さあ始めてみよう！</p>
+            <a href="{{ asset('downloads/STS.zip') }}" download="STS.zip">zipファイルをダウンロード</a>
         </div>
     </body>
 </html>
