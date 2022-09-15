@@ -8,17 +8,20 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/home_page.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div class="button-zorn">
-            <!--後で認証を付けてtopに遷移する前に認証画面に移るようにする-->
-            <a href="/top">ログイン</a>
-        </div>
-        <div class="body">
+        <div class="header">
             <h1>Welcome to STS Competition!</h1>
-            <p>Two green and white trains sitting on the tracks.   Two green and white trains on tracks.</p>
-            <p>↓↓↓</p>
-            <p>4.4/5.0点</p>
+            <a class="btn" href="/top">ログイン/新規登録</a>
+        </div>
+        <div class="main">
+            <div class="sentence">・Two green and white trains sitting on the tracks.</div>
+            <div class="sentence">・Two green and white trains on tracks.</div>
+            <div class="arrow">↓↓↓</div>
+            <div class="score">4.4/5.0点</div>
         </div>
     </body>
 </html>

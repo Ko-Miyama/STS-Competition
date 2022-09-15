@@ -1,3 +1,52 @@
+body {
+    background-color: #f7f6e9;
+}
+
+.bar_area {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 150px;
+}
+
+.bar_area p {
+    border: solid;
+    border-color: #eb6100;
+    border-radius: 5%;
+    background-color: #fff;
+    height: 60px;
+    margin: 0px;
+    text-align: center;
+}
+
+.bar_area a {
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 18.5px 0px;
+    color: #eb6100;
+    text-decoration: none;
+    transition: color 300ms ease-in-out;
+}
+
+.bar_area a:hover {
+    color: #fff;
+    background-color: #eb6100;
+    border-color: #fff;
+    transition: color 300ms ease-in-out;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+.main {
+    position: absolute;
+    top: 80px;
+    left: 150px;
+    margin-left: 20px;
+}
+
 .post {
     background-color: #FFCC32;
 }
@@ -8,4 +57,12 @@
 
 .error {
     color: red;
+}
+
+.app-title {
+    color: #eb6100;
+}
+
+.top p, li {
+    font-size: 20px;
 }
