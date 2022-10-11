@@ -148,11 +148,3 @@ table td.score, table td.time, table td.order {
 .error {
     color: red;
 }
-
-.wide_space {
-    width: 70%;
-}
-
-textarea.wide_space {
-    height: 100px;
-}
