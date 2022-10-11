@@ -9,9 +9,11 @@
     <p><a href="/discussion" class="selected">ディスカッション</a></p>
     <p><a href="/rule">ルール</a></p>
 </div>
-<div class="main">
-    <p>ディスカッション</p>
-    <a href="/discussion/create" class="create">[投稿作成]</a>
+<div class="main discussion">
+    <div class="header">
+        <h1 class="left">ディスカッション</h1>
+        <a href="/discussion/create" class="create right"><h1>[投稿作成]</h1></a>
+    </div>
     <div class="posts">
         @foreach ($posts as $post)
             <div class="post">
@@ -27,11 +29,12 @@
                 <h2 class="title">
                     <a href="/discussion/{{ $post->id }}">{{ $post->title }}</a>
                 </h2>
-                <p class="body">{{ $post->body }}</p>
+                <h4 class="body">{{ $post->body }}</h4>
                 <p class="sub_info">
-                    投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a>
-                    タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a>
-                    メッセージ数：{{ $post->messages_count }}件
+                    投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a>,
+                    タグ：<a href="/discussion/category/{{ $post->category_id }}">{{ $post->category->name }}</a><br>
+                    メッセージ数：{{ $post->messages_count }}件<br>
+                    編集日時：{{ $post->updated_at }}
                 </p>
             </div>
         @endforeach

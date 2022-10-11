@@ -38,6 +38,6 @@ class Post extends Model
 
     public function getMessages()
     {
-        return $this->messages()->with(['user'])->orderBy('created_at', 'DESC')->get();
+        return $this->messages()->with(['user'])->orderBy('created_at', 'ASC')->get();
     }
 }

@@ -9,19 +9,21 @@
     <p><a href="/discussion">ディスカッション</a></p>
     <p><a href="/rule">ルール</a></p>
 </div>
-<div class="main">
-    <p>提出ファイル</p>
+<div class="main submit">
+    <h1>ファイルの提出</h1>
     <form method="POST" action="/submit/result" enctype="multipart/form-data">
         @csrf
-        提出ファイル
-        <input type="file" name="file"><br>
-        <p class="error">{{ $errors->first('file') }}</p>
-        手法名
-        <input type="text" name="post[manner]" placeholder="手法名" value="{{ old('post.manner') }}"><br>
-        <p class="error">{{ $errors->first('post.manner') }}</p>
-        こだわり
-        <textarea name="post[comment]" placeholder="こだわり">{{ old('post.comment') }}</textarea><br>
-        <p class="error">{{ $errors->first('post.comment') }}</p>
+        <div class="submit-field">
+            <p>提出ファイル</p>
+            <input type="file" name="file"><br>
+            <p class="error">{{ $errors->first('file') }}</p>
+            <p>手法名</p>
+            <input class="wide_space" type="text" name="post[manner]" placeholder="手法名" value="{{ old('post.manner') }}"><br>
+            <p class="error">{{ $errors->first('post.manner') }}</p>
+            <p>こだわり</p>
+            <textarea class="wide_space" name="post[comment]" placeholder="こだわり">{{ old('post.comment') }}</textarea><br>
+            <p class="error">{{ $errors->first('post.comment') }}</p>
+        </div>
         <button type="submit">提出</button>
     </form>
 </div>

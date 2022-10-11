@@ -9,17 +9,24 @@
     <p><a href="/discussion">ディスカッション</a></p>
     <p><a href="/rule">ルール</a></p>
 </div>
-<div class="main">
+<div class="main overview">
     <p>提出したモデル一覧</p>
-    <div class="submits">
+    <table class="submits_table">
+        <tr>
+            <th class="manner">手法名</th>
+            <th class="comment">コメント</th>
+            <th class="score">スコア</th>
+            <th class="time">提出日時</th>
+        </tr>
         @foreach ($submits as $submit)
-            <div class="submit">
-                <h2>手法名：{{ $submit->manner }}</h2>
-                <h3>{{ $submit->comment }}</h3>
-                <h3>Score: {{ $submit->score }}</h3>
-            </div>
+            <tr>
+                <td class="manner">{{ $submit->manner }}</td>
+                <td class="comment">{{ $submit->comment }}</td>
+                <td class="score">{{ $submit->score }}</td>
+                <td class="time">{{ $submit->created_at }}</td>
+            </tr>
         @endforeach
-    </div>
+    </table>
     <div class="paginate">
         {{ $submits->links() }}
     </div>

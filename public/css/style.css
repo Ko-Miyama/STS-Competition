@@ -2,11 +2,17 @@ body {
     background-color: #f7f6e9;
 }
 
+a {
+    color: #eb6100;
+}
+
+.py-4 {
+    display: flex;
+}
+
 .bar_area {
-    position: absolute;
-    top: 80px;
-    left: 0px;
-    width: 150px;
+    flex-basis: 25%;
+    padding: 0px 4%;
 }
 
 .bar_area p {
@@ -15,7 +21,7 @@ body {
     border-radius: 5%;
     background-color: #fff;
     height: 60px;
-    margin: 0px;
+    margin-bottom: 5px;
     text-align: center;
 }
 
@@ -41,14 +47,98 @@ body {
 }
 
 .main {
-    position: absolute;
-    top: 80px;
-    left: 150px;
-    margin-left: 20px;
+    flex-basis: 75%;
+    padding: 0px 7%;
+}
+
+.app-title {
+    color: #eb6100;
+}
+
+.top p, li {
+    font-size: 20px;
+}
+
+.submit-field {
+    border: solid;
+    border-radius: 5%;
+    border-color: #eb6100;
+    padding: 10px;
+    margin: 10px 0px;
+    width: 70%;
+}
+
+.submit p {
+    font-size: 20px;
+}
+
+/*.submit input {*/
+/*    width: 500px;*/
+/*}*/
+
+/*.submit textarea {*/
+/*    width: 500px;*/
+/*    height: 100px;*/
+/*    次回、レスポンシブ対応について調べてから取り掛かる！！！*/
+/*    プラス、佐藤さんとかにそのアドバイス聞いてみたり、縦幅のピクセルはどの程度決めるべきなのか相談してみる*/
+/*}*/
+
+.wide_space {
+    width: 70%;
+}
+
+textarea.wide_space {
+    height: 100px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #eee;
+}
+
+table th {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #eb6100;
+    border: solid #ccc;
+    color: #fff;
+}
+
+table td {
+    padding: 10px 10px;
+    background-color: #eee;
+    border: solid #ccc;
+}
+
+table td.manner, table td.name {
+    text-align: center;
+}
+
+table td.comment {
+    text-align: left;
+}
+
+table td.score, table td.time, table td.order {
+    text-align: right;
+}
+
+.discussion .header {
+    display: flex;
+}
+
+.right {
+    margin-left: auto;
 }
 
 .post {
-    background-color: #FFCC32;
+    border: solid #eb6100 2px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
 .create, .edit {
@@ -59,10 +149,10 @@ body {
     color: red;
 }
 
-.app-title {
-    color: #eb6100;
+.wide_space {
+    width: 70%;
 }
 
-.top p, li {
-    font-size: 20px;
+textarea.wide_space {
+    height: 100px;
 }

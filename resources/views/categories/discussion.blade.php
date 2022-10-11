@@ -29,8 +29,9 @@
                 </h2>
                 <p class="body">{{ $post->body }}</p>
                 <p class="sub_info">
-                    投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a>
-                    メッセージ数：{{ $post->messages_count }}
+                    投稿者：<a href="/discussion/user/{{ $post->user_id }}">{{ $post->user->name }}</a><br>
+                    メッセージ数：{{ $post->messages_count }}件<br>
+                    編集日時：{{ $post->updated_at }}
                 </p>
             </div>
         @endforeach
