@@ -21,27 +21,44 @@
         <p class="sub_info">更新日時：{{ $post->updated_at }}</p>
     </div>
     <div class="messages">
-        <h3>メッセージ</h3>
         @foreach ($messages as $message)
-            <div class="message">
-                @if ($message->user_id === auth()->id())
-                    <a href="/discussion/{{ $post->id }}/{{ $message->id }}/edit">編集</a>
-                    <form action="/discussion/{{ $post->id }}/{{ $message->id }}" id="form_{{ $message->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="button" onclick="deleteMessage('form_' + {{ $message->id }});" value="削除">
-                    </form>
-                @endif
-                <p>{{ $message->body }}</p>
-                <p>{{ $message->user->name }}</p>
-            </div>
+            @if ($message->user_id === auth()->id())
+                <!--吹き出し（右）の始まり -->
+                <div class="sb-box">
+                    <div class="icon-name icon-name-right">{{ $message->user->name }}</div>
+                    <div class="sb-side sb-side-right">
+                        <div class="sb-txt sb-txt-right">
+                            {{ $message->body }}
+                        </div><!-- /.sb-txt sb-txt-right -->
+                        <a href="/discussion/{{ $post->id }}/{{ $message->id }}/edit">編集</a>
+                        <form action="/discussion/{{ $post->id }}/{{ $message->id }}" class="sb-txt-delete" id="form_{{ $message->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="button" onclick="deleteMessage('form_' + {{ $message->id }});" value="削除">
+                        </form>
+                    </div><!-- /.sb-side sb-side-right -->
+                </div><!-- /.sb-box -->
+                <!--吹き出し（右）の終わり -->
+            @else
+                <!-- 吹き出し（左）の始まり -->
+                <div class="sb-box">
+                    <div class="icon-name icon-name-left">{{ $message->user->name }}</div>
+                    <div class="sb-side sb-side-left">
+                        <div class="sb-txt sb-txt-left">
+                            {{ $message->body }}
+                        </div><!-- /.sb-txt sb-txt-left -->
+                    </div><!-- /.sb-side sb-side-left -->
+                </div><!-- /.sb-box -->
+                <!--吹き出し（左）の終わり -->
+            @endif
         @endforeach
     </div>
+
     <form action="/discussion/{{ $post->id }}/msgstore" id="form" method="POST">
         @csrf
-        <textarea id="msg" name="post[body]">{{ old('post.body') }}</textarea>
+        <textarea class="wide_space" id="msg" name="post[body]">{{ old('post.body') }}</textarea>
         <p class="error">{{ $errors->first('post.body') }}</p>
-        <input type="button" onclick="postWithJudge();" value="送信">
+        <input type="button" onclick="postWithJudge();" value="メッセージを送信">
     </form>
     <a href="/discussion">戻る</a>
 </div>
