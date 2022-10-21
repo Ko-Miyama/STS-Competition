@@ -14,7 +14,7 @@
     <form action="/discussion/{{ $post->id }}/{{ $message->id }}" method="POST">
         @csrf
         @method('PUT')
-        <textarea name="post[body]">{{ $message->body }}</textarea>
+        <textarea class="wide_space" name="post[body]">{{ $message->body }}</textarea>
         <p class="error">{{ $errors->first('post.body') }}</p>
         <input type="submit" value="編集">
     </form>
