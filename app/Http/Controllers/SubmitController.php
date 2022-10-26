@@ -46,6 +46,17 @@ class SubmitController extends Controller
         return view('submits/overview')->with(['submits' => $request->user()->getSubmitsPaginateByLimit()]);
     }
 
+    public function delete(Submit $submit)
+    {
+        if ($submit->user_id === auth()->id()) {
+            if (file_exists($submit->file_path)) {
+                unlink($submit->file_path);
+            }
+            $submit->delete();
+        }
+        return redirect('/overview');
+    }
+
     public function leaderboard(Submit $submit)
     {
         [$submits, $ranks] = $submit->getRanking();

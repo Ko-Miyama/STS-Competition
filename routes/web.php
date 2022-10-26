@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/submit', [SubmitController::class, 'submit']);
     Route::post('/submit/result', [SubmitController::class, 'store']);
     Route::get('/overview', [SubmitController::class, 'overview']);
+    Route::delete('/overview/{submit}', [SubmitController::class, 'delete']);
     Route::get('/leaderboard', [SubmitController::class, 'leaderboard']);
     Route::get('/discussion', [PostController::class, 'discussion']);
     Route::get('/discussion/create', [PostController::class, 'create']);
